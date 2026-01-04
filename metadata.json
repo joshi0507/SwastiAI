@@ -1,0 +1,8 @@
+{
+  "name": "SwasthAI - Modern Healthcare Platform",
+  "description": "An integrated AI-powered healthcare ecosystem featuring telemedicine, appointment booking, health records management, and a specialized compounder interface for patient reports and doctor connectivity.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
