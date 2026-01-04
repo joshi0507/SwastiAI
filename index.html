@@ -1,133 +1,166 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <script type="module" src="/index.tsx"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SwasthAI - Next Gen Healthcare</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet" />
     <style>
-        :root {
-            --primary: #0ea5e9;
-            --secondary: #6366f1;
-        }
-        body {
-            font-family: 'Space Grotesk', sans-serif;
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-            background: #fcfdfe;
-        }
-        .font-heading {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        
-        .mesh-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at 0% 0%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 100% 100%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-                        white;
-        }
+      :root {
+        --primary: #0ea5e9;
+        --secondary: #6366f1;
+      }
+      body {
+        font-family: "Space Grotesk", sans-serif;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        background: #fcfdfe;
+      }
+      .font-heading {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
 
-        .float-3d {
-            animation: float3d 6s ease-in-out infinite;
-            transform-style: preserve-3d;
-        }
-        @keyframes float3d {
-            0%, 100% { transform: translateY(0) rotateY(5deg); }
-            50% { transform: translateY(-20px) rotateY(-5deg); }
-        }
+      .mesh-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: radial-gradient(
+            circle at 0% 0%,
+            rgba(14, 165, 233, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 100% 100%,
+            rgba(99, 102, 241, 0.1) 0%,
+            transparent 50%
+          ),
+          white;
+      }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      .float-3d {
+        animation: float3d 6s ease-in-out infinite;
+        transform-style: preserve-3d;
+      }
+      @keyframes float3d {
+        0%,
+        100% {
+          transform: translateY(0) rotateY(5deg);
         }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        50% {
+          transform: translateY(-20px) rotateY(-5deg);
         }
+      }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-        }
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-        .ai-doctor-scene {
-            perspective: 2000px;
-        }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
 
-        .video-call-pulse {
-            animation: pulse-sky 2s infinite;
-        }
-        @keyframes pulse-sky {
-            0% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.4); }
-            70% { box-shadow: 0 0 0 20px rgba(14, 165, 233, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
-        }
+      .ai-doctor-scene {
+        perspective: 2000px;
+      }
 
-        #preloader {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.6s ease;
+      .video-call-pulse {
+        animation: pulse-sky 2s infinite;
+      }
+      @keyframes pulse-sky {
+        0% {
+          box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.4);
         }
+        70% {
+          box-shadow: 0 0 0 20px rgba(14, 165, 233, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(14, 165, 233, 0);
+        }
+      }
 
-        .hologram-effect {
-            position: relative;
-            overflow: hidden;
+      #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.6s ease;
+      }
+
+      .hologram-effect {
+        position: relative;
+        overflow: hidden;
+      }
+      .hologram-effect::after {
+        content: "";
+        position: absolute;
+        top: -100%;
+        left: -100%;
+        width: 300%;
+        height: 300%;
+        background: linear-gradient(
+          45deg,
+          transparent 0%,
+          rgba(14, 165, 233, 0.1) 50%,
+          transparent 100%
+        );
+        animation: holo-shine 5s linear infinite;
+      }
+      @keyframes holo-shine {
+        0% {
+          transform: translate(-50%, -50%) rotate(0deg);
         }
-        .hologram-effect::after {
-            content: "";
-            position: absolute;
-            top: -100%; left: -100%; width: 300%; height: 300%;
-            background: linear-gradient(45deg, transparent 0%, rgba(14, 165, 233, 0.1) 50%, transparent 100%);
-            animation: holo-shine 5s linear infinite;
+        100% {
+          transform: translate(-50%, -50%) rotate(360deg);
         }
-        @keyframes holo-shine {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
-        }
+      }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3"
-  }
-}
-</script>
-</head>
-<body>
+  </head>
+  <body>
     <div id="preloader">
-        <div class="flex flex-col items-center">
-            <div class="w-12 h-12 border-4 border-sky-600 border-t-transparent rounded-full animate-spin mb-6"></div>
-            <p class="font-bold text-slate-400 tracking-[0.3em] text-[10px] uppercase">SwasthAI Engine Starting</p>
-        </div>
+      <div class="flex flex-col items-center">
+        <div
+          class="w-12 h-12 border-4 border-sky-600 border-t-transparent rounded-full animate-spin mb-6"></div>
+        <p
+          class="font-bold text-slate-400 tracking-[0.3em] text-[10px] uppercase">
+          SwasthAI Engine Starting
+        </p>
+      </div>
     </div>
     <div class="mesh-bg"></div>
     <div id="root"></div>
     <script>
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 600);
-            }
-        });
+      window.addEventListener("load", () => {
+        const preloader = document.getElementById("preloader");
+        if (preloader) {
+          preloader.style.opacity = "0";
+          setTimeout(() => (preloader.style.display = "none"), 600);
+        }
+      });
     </script>
-</body>
+  </body>
 </html>
