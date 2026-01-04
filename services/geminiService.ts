@@ -5,7 +5,8 @@ export class GeminiService {
   private ai: any;
 
   constructor() {
-    this.ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+    // Correctly initialize using process.env.API_KEY directly as per guidelines
+    this.ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   }
 
   async getHealthAdvice(prompt: string, history: { role: string; parts: any[] }[]) {
@@ -18,6 +19,7 @@ export class GeminiService {
           temperature: 0.7,
         }
       });
+      // Correctly access the .text property from GenerateContentResponse
       return response.text;
     } catch (error) {
       console.error("Gemini Error:", error);

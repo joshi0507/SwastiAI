@@ -10,10 +10,18 @@ export interface User {
   id: string;
   name: string;
   email: string;
+  password?: string; // Added password for staff/admin logins
   role: UserRole;
   avatar?: string;
   specialization?: string;
   licenseNumber?: string;
+}
+
+export interface AmbulanceStatus {
+  village: string;
+  arrivalTime: string;
+  status: 'ON_ROUTE' | 'STATIONED' | 'MAINTENANCE';
+  location: string;
 }
 
 export interface Appointment {
@@ -33,7 +41,8 @@ export interface HealthRecord {
   patientId: string;
   title: string;
   date: string;
-  type: 'LAB_REPORT' | 'PRESCRIPTION' | 'SCAN';
+  // Added 'URINE_TEST' to satisfy dashboard requirements for lab report uploads
+  type: 'LAB_REPORT' | 'PRESCRIPTION' | 'SCAN' | 'BLOOD_TEST' | 'BP_TEST' | 'URINE_TEST';
   url: string;
   uploadedBy: string;
 }
